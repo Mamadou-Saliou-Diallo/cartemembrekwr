@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Cartes Membres Kéwéré - PDF & Impression Pro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body { font-family: Arial, sans-serif; }
+
+/* CONTENEUR PRINCIPAL */
+.main-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* FORMULAIRE */
+.form-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 260px;
+  background: #f4f6f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.form-right label { font-size: 12px; font-weight: bold; }
+.form-right input, .form-right select {
+  padding: 7px; border-radius: 5px; border: 1px solid #ccc; font-size: 12px;
+}
+.form-right button {
+  margin-top: 10px; padding: 8px;
+  background-color: #004080; color: #fff; border: none; border-radius: 6px;
+  cursor: pointer; font-weight: bold;
+}
+.form-right button:hover { background-color: #0066cc; }
+
+/* CONTENEUR DES CARTES */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 88mm);
+  gap: 5mm;
+  position: relative;
+}
+
+/* CARTE MEMBRE */
+.carte-membre {
+  width: 88mm;
+  aspect-ratio: 1.586;
+  background: #fffacd;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  font-size: 9px;
+  position: relative;
+  overflow: hidden;
+  page-break-inside: avoid; /* Eviter coupure PDF */
+}
+
+/* WATERMARK */
+.carte-membre::after {
+  content: "KÉWÉRÉ, nos racines, notre futur";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(0, 64, 128, 0.1);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* COINS DÉCOUPE */
+.carte-membre .corner {
+  position: absolute; width: 6mm; height: 6mm; border: 0.3mm solid #000; pointer-events: none;
+}
+.corner.tl { top: -1mm; left: -1mm; border-right: none; border-bottom: none; }
+.corner.tr { top: -1mm; right: -1mm; border-left: none; border-bottom: none; }
+.corner.bl { bottom: -1mm; left: -1mm; border-right: none; border-top: none; }
+.corner.br { bottom: -1mm; right: -1mm; border-left: none; border-top: none; }
+
+/* HEADER */
+.carte-header {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #004080; padding: 5px 8px; color: #fff;
+  border-radius: 10px 10px 0 0; z-index: 1;
+}
+.carte-header .logo { width: 24px; }
+.header-text { text-align: center; flex-grow: 1; font-weight: bold; font-size: 10px; }
+.sub-title { font-size: 9px; }
+
+/* CORPS RECTO */
+.carte-body { display: flex; gap: 6px; flex: 1; margin-top: 5px; z-index: 1; }
+.photo { width: 60px; height: 75px; border-radius: 6px; overflow: hidden; background: #fff; border: 1px solid #ccc; flex-shrink: 0; }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.infos { flex: 1; display: flex; flex-direction: column; gap: 6px; z-index: 1; }
+.main-title-card { text-align: center; font-weight: bold; color: #004080; margin-bottom: 4px; font-size: 11px; }
+.info-row { display: flex; justify-content: space-between; }
+.label { font-weight: 600; color: #333; }
+.value { font-weight: 500; text-align: right; max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.id-highlight { color: #004080; font-weight: bold; }
+
+/* VERSO */
+.verso {
+  width: 88mm;
+  aspect-ratio: 1.586;
+  border-radius: 14px;
+  background: #e8f0f8;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  justify-content: space-between;
+  font-size: 9px;
+  position: relative;
+  page-break-inside: avoid; /* Eviter coupure PDF */
+}
+.verso-header {
+  text-align: center; font-weight: bold; font-size: 10px;
+  margin-bottom: 6px;
+}
+.verso-qr {
+  flex: 1; display: flex; justify-content: center; align-items: center;
+}
+.signature {
+  text-align: center; font-size: 8px; margin-top: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .main-layout { flex-direction: column; align-items: center; }
+  .form-right, .cards-container { width: 100%; max-width: 350px; }
+}
+
+/* IMPRESSION */
+@media print {
+  @page { size: A4 landscape; margin: 0; }
+  body { margin: 0; padding: 0; }
+  .main-layout { display: block; }
+  .cards-container {
+    display: grid; grid-template-columns: repeat(3, 88mm); grid-template-rows: repeat(2, auto);
+    gap: 12mm; justify-content: center; align-content: center; width: 100%;
+  }
+  .carte-membre, .verso { page-break-inside: avoid; background-color: #fffacd !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .form-right, #printBtn, #pdfBtn { display: none; }
+}
+</style>
+</head>
+<body>
+
+<h2 class="title">Générateur de Cartes Membres Kéwéré - PDF & Impression Pro</h2>
+
+<div class="main-layout">
+
+<form id="memberForm" class="form-right">
+<label>Nom</label>
+<input type="text" id="nom" required>
+<label>Prénom</label>
+<input type="text" id="prenom" required>
+<label>Date de naissance</label>
+<input type="date" id="dob" required>
+<label>Sexe</label>
+<select id="sexe" required>
+<option value="">Sélectionner</option>
+<option value="Masculin">Masculin</option>
+<option value="Féminin">Féminin</option>
+</select>
+<label>Pays de résidence</label>
+<input type="text" id="pays" required>
+<label>Fonction</label>
+<input type="text" id="fonction" required>
+<label>Photo du membre</label>
+<input type="file" id="photo" accept="image/*">
+<button type="submit">Ajouter la carte</button>
+<button type="button" id="printBtn" onclick="window.print()">🖨️ Imprimer toutes les cartes</button>
+<button type="button" id="pdfBtn">📄 Enregistrer en PDF</button>
+</form>
+
+<div class="cards-container" id="cardsContainer"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+const form = document.getElementById("memberForm");
+const cardsContainer = document.getElementById("cardsContainer");
+const pdfBtn = document.getElementById("pdfBtn");
+
+// Liste des drapeaux par pays
+const drapeaux = {
+  "sénégal": "assets/logos/gn.png",
+  "guinée": "assets/logos/logokwr.png",
+};
+
+// Fonction pour générer la carte
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  const nom = document.getElementById("nom").value;
+  const prenom = document.getElementById("prenom").value;
+  const dob = document.getElementById("dob").value;
+  const sexe = document.getElementById("sexe").value;
+  const pays = document.getElementById("pays").value;
+  const fonction = document.getElementById("fonction").value;
+
+  const randomDigits = Math.floor(100 + Math.random() * 900);
+  const id = "MEM" + Date.now().toString().slice(-5) + randomDigits;
+
+  const today = new Date();
+  const expirationDate = new Date(today.getFullYear()+2, today.getMonth(), today.getDate());
+  const dateEmission = today.toISOString().split('T')[0];
+  const dateExp = expirationDate.toISOString().split('T')[0];
+
+  let photoURL = "";
+  const photoInput = document.getElementById("photo");
+
+  const addCard = () => {
+    const cardWrapper = document.createElement("div");
+
+    // RECTO
+    const recto = document.createElement("div");
+    recto.className = "carte-membre";
+    recto.innerHTML = `
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+      <div class="carte-header">
+        <img src="${drapeaux[pays.toLowerCase()] || drapeaux['sénégal']}" class="logo" id="logoPays">
+        <div class="header-text"><div class="sub-title">RÉPUBLIQUE DE GUINÉE</div></div>
+        <img src="assets/logos/logokwr.png" class="logo">
+      </div>
+      <div class="carte-body">
+        <div class="photo"><img src="${photoURL}" alt="Photo"></div>
+        <div class="infos">
+          <div class="main-title-card">KÉWÉRÉ</div>
+          <div class="info-row"><span class="label">Nom</span><span class="value">${nom}</span></div>
+          <div class="info-row"><span class="label">Prénom</span><span class="value">${prenom}</span></div>
+          <div class="info-row"><span class="label">ID</span><span class="value id-highlight">${id}</span></div>
+          <div class="info-row"><span class="label">Naissance</span><span class="value">${dob}</span></div>
+          <div class="info-row"><span class="label">Sexe</span><span class="value">${sexe}</span></div>
+          <div class="info-row"><span class="label">Pays de résidence</span><span class="value">${pays}</span></div>
+          <div class="info-row"><span class="label">Fonction</span><span class="value">${fonction}</span></div>
+          <div class="info-row"><span class="label">Date d'émission</span><span class="value">${dateEmission}</span></div>
+          <div class="info-row"><span class="label">Date d'expiration</span><span class="value">${dateExp}</span></div>
+        </div>
+      </div>
+    `;
+
+    // VERSO
+    const verso = document.createElement("div");
+    verso.className = "verso";
+    verso.innerHTML = `
+      <div class="verso-header">VILLAGE DE KÉWÉRÉ — CARTE OFFICIELLE</div>
+      <div class="verso-qr" id="qrcode2-${id}"></div>
+      <div class="signature">Signature autorisée</div>
+    `;
+
+    cardWrapper.appendChild(recto);
+    cardWrapper.appendChild(verso);
+    cardsContainer.appendChild(cardWrapper);
+
+    new QRCode(document.getElementById(`qrcode2-${id}`), { text: "https://kewere.vercel.app", width: 60, height: 60 });
+    form.reset();
+  }
+
+  if(photoInput.files && photoInput.files[0]){
+    const reader = new FileReader();
+    reader.onload = function(event){
+      photoURL = event.target.result;
+      addCard();
+    };
+    reader.readAsDataURL(photoInput.files[0]);
+  } else { addCard(); }
+});
+
+// PDF Button avec verso complet
+pdfBtn.addEventListener("click", () => {
+  const opt = {
+    margin: [5,5,5,5],
+    filename: 'cartes_kewere.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: { scale: 3, logging: true, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+  };
+
+  const clone = cardsContainer.cloneNode(true);
+  clone.querySelectorAll('.carte-membre, .verso').forEach(el => {
+    el.style.pageBreakInside = "avoid";
+    el.style.breakInside = "avoid";
+  });
+
+  html2pdf().set(opt).from(clone).save();
+});
+</script>
+
+</body>
+</html>
