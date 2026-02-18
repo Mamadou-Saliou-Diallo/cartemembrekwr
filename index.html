@@ -101,7 +101,7 @@ h2.title { text-align: center; color: #003366; margin-top: 15px; }
 .signature {
   width: 80%; text-align: center; display: flex; flex-direction: column; align-items: center;
 }
-.signature-line { width: 100%; border-bottom: 1px solid #003366; margin-bottom: 2px; }
+.signature-line { width: 100%; border-bottom: 1px solid #003366; margin-bottom: 4px; }
 .signature-text { font-size: 6px; color: #003366; }
 
 .verso-qr { width: 20mm; height: 20mm; margin: 4px auto; display: flex; justify-content: center; align-items: center; border-radius: 3px; background: #fff; border: 1px solid #003366; }
@@ -161,7 +161,7 @@ form.addEventListener("submit", function(e){
   const sexe = document.getElementById("sexe").value;
   const pays = document.getElementById("pays").value;
   const fonction = document.getElementById("fonction").value;
-  const id = "MEM" + Date.now().toString().slice(-6);
+  const id = "KWR" + Date.now().toString().slice(-6);
   const today = new Date();
   const emission = today.toISOString().split('T')[0];
   const expiration = new Date(today); expiration.setFullYear(today.getFullYear()+2);
@@ -183,7 +183,7 @@ form.addEventListener("submit", function(e){
           <div class="photo"><img src="${photoURL}" alt="Photo"></div>
           <div class="infos">
             <div class="main-title-card">${prenom} ${nom}</div>
-            <div class="sub-title">${fonction}</div>
+            <div class="sub-title"><strong>Fonction :</strong> ${fonction}</div>
             <div class="info-table">
               <div class="info-row"><span class="label">ID</span><span class="value">${id}</span></div>
               <div class="info-row"><span class="label">Naissance</span><span class="value">${dob}</span></div>
