@@ -89,7 +89,9 @@ h2.title { text-align: center; color: #003366; margin-top: 15px; }
 .verso {
   width: 85.6mm; height: 54mm;
   border-radius: 6mm; display: flex; flex-direction: column; align-items: center;
-  justify-content: space-around; padding: 4px;
+  justify-content: flex-start;
+  gap: 13px;
+  padding: 4px;
   background: linear-gradient(135deg, #e6f0ff, #cce0ff);
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
@@ -99,13 +101,24 @@ h2.title { text-align: center; color: #003366; margin-top: 15px; }
 .info-dates { width: 90%; display: flex; justify-content: space-between; font-size: 7px; color: #003366; }
 
 .signature {
-  width: 80%; text-align: center; display: flex; flex-direction: column; align-items: center;
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -6px; /* ← remonte la signature */
 }
-.signature-line { width: 100%; border-bottom: 1px solid #003366; margin-bottom: 4px; }
-.signature-text { font-size: 6px; color: #003366; }
 
-.verso-qr { width: 20mm; height: 20mm; margin: 4px auto; display: flex; justify-content: center; align-items: center; border-radius: 3px; background: #fff; border: 1px solid #003366; }
-.verso-qr > canvas { max-width: 100%; max-height: 100%; }
+.signature-line {
+  width: 100%;
+  border-bottom: 1px solid #003366;
+  margin-bottom: 2px;
+}
+
+.signature-text {
+  font-size: 6px;
+  color: #003366;
+}
 
 @media print {
   @page { size: A4 landscape; margin: 5mm; }
