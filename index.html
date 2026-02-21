@@ -174,7 +174,13 @@ form.addEventListener("submit", function(e){
   const sexe = document.getElementById("sexe").value;
   const pays = document.getElementById("pays").value;
   const fonction = document.getElementById("fonction").value;
-  const id = "KWR" + Date.now().toString().slice(-6);
+
+  // ⚡ Nouvelle fonctionnalité : ID personnalisé ou automatique
+  let id = prompt("Entrez un ID personnalisé ou laissez vide pour génération automatique :");
+  if (!id) {
+    id = "KWR" + Date.now().toString().slice(-6);
+  }
+
   const today = new Date();
   const emission = today.toISOString().split('T')[0];
   const expiration = new Date(today); expiration.setFullYear(today.getFullYear()+2);
