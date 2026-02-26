@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Cartes Membres Kéwéré - CEDEAO Premium</title>
+<title>Cartes Membres Kéwéré - PVC Ready</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f0f0f0; }
@@ -20,121 +20,44 @@ h2.title { text-align: center; color: #003366; margin-top: 15px; }
 .form-right button { margin-top: 10px; padding: 8px; background-color: #004080; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
 .form-right button:hover { background-color: #0066cc; }
 
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 85.6mm);
-  gap: 5mm;
-  position: relative;
-}
+.cards-container { display: grid; grid-template-columns: repeat(auto-fill, 85.6mm); gap: 5mm; position: relative; }
 
-/* Recto CEDEAO premium */
-.carte-membre {
-  width: 85.6mm;
-  height: 54mm;
-  border-radius: 6mm;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0;
-  font-size: 8px;
-  position: relative;
-  box-sizing: border-box;
-  background: #fff;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-.carte-header {
-  display: flex; justify-content: space-between; align-items: center;
-  background: linear-gradient(90deg, #003399, #0066cc);
-  color: #fff;
-  border-radius: 6mm 6mm 0 0;
-  padding: 2px 6px;
-  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.2);
-}
-.carte-header .logo { width: 22px; }
+/* Carte recto */
+.carte-membre { width: 85.6mm; height: 54mm; border-radius: 6mm; display: flex; flex-direction: column; justify-content: space-between; padding: 0; font-size: 8px; position: relative; box-sizing: border-box; background: #fff; box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+.carte-header{display:flex;justify-content:space-between;align-items:center;height:12mm;padding:2px 8px;background:linear-gradient(90deg,#003399,#0066cc);color:#fff;border-radius:6mm 6mm 0 0;box-shadow:inset 0 -2px 4px rgba(0,0,0,0.2);}
+.carte-header .logo{height:10mm;width:auto;}
 .header-text { text-align: center; flex-grow: 1; font-weight: bold; font-size: 11px; }
-
-.carte-body {
-  display: flex; gap: 6px; flex: 1; position: relative; padding: 4px;
-  background: linear-gradient(135deg, #cce0ff, #99c2ff);
-  border-radius: 0 0 6mm 6mm;
-}
-.photo {
-  width: 42px; height: 54px; border-radius: 4px; overflow: hidden;
-  background: #fff; border: 2px solid #004080; box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  flex-shrink: 0;
-}
+.carte-body { display: flex; gap: 6px; flex: 1; position: relative; padding: 4px; background: linear-gradient(135deg, #cce0ff, #99c2ff); border-radius: 0 0 6mm 6mm; }
+.photo { width: 42px; height: 54px; border-radius: 4px; overflow: hidden; background: #fff; border: 2px solid #004080; box-shadow: 0 2px 4px rgba(0,0,0,0.3); flex-shrink: 0; }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
-
 .infos { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-.main-title-card {
-  text-align: center; font-weight: bold; font-size: 11px; color: #003366;
-}
+.main-title-card { text-align: center; font-weight: bold; font-size: 11px; color: #003366; }
 .sub-title { text-align: center; font-size: 9px; color: #004080; }
-
 .info-table { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
-.info-row {
-  display: flex; justify-content: space-between; font-size: 8px; padding: 2px 6px;
-  background: rgba(255,255,255,0.25); border-radius: 4px; color: #003366; font-weight: bold;
-}
+.info-row { display: flex; justify-content: space-between; font-size: 8px; padding: 2px 6px; background: rgba(255,255,255,0.25); border-radius: 4px; color: #003366; font-weight: bold; }
 .value { font-weight: 500; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-.recto-qr {
-  position: absolute; bottom: 2mm; right: 2mm; width: 14mm; height: 14mm;
-  border-radius: 2px; background: #fff; display: flex; justify-content: center; align-items: center; border: 1px solid #004080;
-}
+.recto-qr { position: absolute; bottom: 2mm; right: 2mm; width: 12mm; height: 12mm; border-radius: 2px; background: #fff; display: flex; justify-content: center; align-items: center; border: 1px solid #004080; }
 .recto-qr > canvas { max-width: 100%; max-height: 100%; }
 
-/* Verso */
-.verso {
-  width: 85.6mm; height: 54mm;
-  border-radius: 6mm; display: flex; flex-direction: column; align-items: center;
-  justify-content: flex-start;
-  gap: 13px;
-  padding: 4px;
-  background: linear-gradient(135deg, #e6f0ff, #cce0ff);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
+/* Carte verso */
+.verso { width: 85.6mm; height: 54mm; border-radius: 6mm; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 13px; padding: 4px; background: linear-gradient(135deg, #e6f0ff, #cce0ff); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 .verso-header { font-size: 8px; font-weight: bold; color: #003366; text-align: center; margin-bottom: 2px; }
-.verso-logo { width: 30px; margin: 2px 0; }
+.verso-logo { width: 45px; height: auto; margin: 2px 0; }
 .info-dates { width: 90%; display: flex; justify-content: space-between; font-size: 7px; color: #003366; }
-
-.signature {
-  width: 80%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: -6px; /* ← remonte la signature */
-}
-
-.signature-line {
-  width: 100%;
-  border-bottom: 1px solid #003366;
-  margin-bottom: 2px;
-}
-
-.signature-text {
-  font-size: 6px;
-  color: #003366;
-}
+.signature { width: 80%; text-align: center; display: flex; flex-direction: column; align-items: center; margin-top: -6px; }
+.signature-line { width: 100%; border-bottom: 1px solid #003366; margin-bottom: 2px; }
+.signature-text { font-size: 6px; color: #003366; }
 
 @media print {
-  @page { size: A4 landscape; margin: 5mm; }
+  @page { size: A4 landscape; margin: 2mm; }
   body { margin: 0; padding: 0; }
   .cards-container, .form-right, #printBtn, #pdfBtn { display: none; }
-}
-
-@media (max-width:700px){
-  .main-layout { flex-direction: column; align-items: center; }
-  .form-right, .cards-container { width: 100%; max-width: 350px; }
 }
 </style>
 </head>
 <body>
 
-<h2 class="title">Générateur de Cartes Membres Kéwéré - CEDEAO Premium</h2>
+<h2 class="title">Générateur de Cartes Membres Kéwéré - PVC Ready</h2>
 
 <div class="main-layout">
 <form id="memberForm" class="form-right">
@@ -175,11 +98,8 @@ form.addEventListener("submit", function(e){
   const pays = document.getElementById("pays").value;
   const fonction = document.getElementById("fonction").value;
 
-  // ⚡ Nouvelle fonctionnalité : ID personnalisé ou automatique
   let id = prompt("Entrez un ID personnalisé ou laissez vide pour génération automatique :");
-  if (!id) {
-    id = "KWR" + Date.now().toString().slice(-6);
-  }
+  if (!id) id = "KWR"+Date.now().toString().slice(-6);
 
   const today = new Date();
   const emission = today.toISOString().split('T')[0];
@@ -196,7 +116,7 @@ form.addEventListener("submit", function(e){
         <div class="carte-header">
           <img src="${drapeaux[pays.toLowerCase()] || drapeaux['sénégal']}" class="logo">
           <div class="header-text">KÉWÉRÉ</div>
-          <img src="assets/logos/logokwr.png" class="logo">
+          <img src="assets/logos/logo_kwr.png" class="logo">
         </div>
         <div class="carte-body">
           <div class="photo"><img src="${photoURL}" alt="Photo"></div>
@@ -207,7 +127,7 @@ form.addEventListener("submit", function(e){
               <div class="info-row"><span class="label">ID</span><span class="value">${id}</span></div>
               <div class="info-row"><span class="label">Naissance</span><span class="value">${dob}</span></div>
               <div class="info-row"><span class="label">Sexe</span><span class="value">${sexe}</span></div>
-              <div class="info-row"><span class="label">Pays de Résidence</span><span class="value">${pays}</span></div>
+              <div class="info-row"><span class="label">Pays d'origine</span><span class="value">${pays}</span></div>
             </div>
             <div class="recto-qr" id="qr-${id}"></div>
           </div>
@@ -216,7 +136,7 @@ form.addEventListener("submit", function(e){
 
       <div class="verso">
         <div class="verso-header">KÉWÉRÉ — Engagement • Unité • Développement</div>
-        <img src="assets/logos/logokwr.png" class="verso-logo">
+        <img src="assets/logos/logo_kwr.png" class="verso-logo">
         <div id="qr-verso-${id}" class="verso-qr"></div>
         <div class="info-dates">
           <span>Émission: ${emission}</span>
@@ -229,76 +149,63 @@ form.addEventListener("submit", function(e){
       </div>
     `;
     cardsContainer.appendChild(wrapper);
-
-    new QRCode(document.getElementById(`qr-${id}`), { text: "https://kewere.vercel.app", width: 48, height: 48 });
-    new QRCode(document.getElementById(`qr-verso-${id}`), { text: "https://kewere.vercel.app", width: 80, height: 80 });
-
+    new QRCode(document.getElementById(`qr-${id}`), { text:"https://kewere.vercel.app", width:36, height:36 });
+    new QRCode(document.getElementById(`qr-verso-${id}`), { text:"https://kewere.vercel.app", width:80, height:80 });
     form.reset();
   }
 
   if(photoInput.files && photoInput.files[0]){
     const reader = new FileReader();
-    reader.onload = e => { photoURL = e.target.result; addCard(); };
+    reader.onload = e=>{ photoURL = e.target.result; addCard(); };
     reader.readAsDataURL(photoInput.files[0]);
   } else addCard();
 });
 
-pdfBtn.addEventListener("click", () => {
-  const pageWidth = 297;
-  const pageHeight = 210;
-  const cardWidthMM = 85.6;
-  const cardHeightMM = 54;
-  const gapMM = 5;
+// PDF PVC Ready : cartes à l'échelle exacte pour PVC
+pdfBtn.addEventListener("click", ()=>{
+  const pageWidth = 297, pageHeight = 210; // mm
+  const margin = 2; // minimal margin
+  const cardWidth = 85.6, cardHeight = 54;
   const cardsPerPage = 3;
+  const gap = (pageWidth - 2*margin - cardsPerPage*cardWidth) / (cardsPerPage-1);
 
   const cards = document.querySelectorAll("#cardsContainer > div");
   const pdfContainer = document.createElement("div");
   pdfContainer.style.display = "flex";
   pdfContainer.style.flexDirection = "column";
+  pdfContainer.style.gap = "2mm";
 
   let pageDiv = document.createElement("div");
+  pageDiv.style.width = (pageWidth - 2*margin)+"mm";
+  pageDiv.style.height = (pageHeight - 2*margin)+"mm";
   pageDiv.style.display = "flex";
   pageDiv.style.justifyContent = "flex-start";
-  pageDiv.style.flexWrap = "wrap";
-  pageDiv.style.width = `${pageWidth}mm`;
-  pageDiv.style.height = `${pageHeight}mm`;
-  pageDiv.style.boxSizing = "border-box";
-  let count = 0;
+  pageDiv.style.alignItems = "flex-start";
+  pageDiv.style.gap = gap+"mm";
+  pdfContainer.appendChild(pageDiv);
 
-  cards.forEach((card) => {
-    const wrapper = card.cloneNode(true);
-    wrapper.style.width = `${cardWidthMM}mm`;
-    wrapper.style.height = `${cardHeightMM*2 + gapMM}mm`;
-    wrapper.style.marginRight = `${gapMM}mm`;
-    wrapper.style.marginBottom = `${gapMM}mm`;
-    wrapper.style.boxSizing = "border-box";
-
-    pageDiv.appendChild(wrapper);
-    count++;
-
-    if(count === cardsPerPage){
-      pdfContainer.appendChild(pageDiv);
+  cards.forEach((card, index)=>{
+    const clone = card.cloneNode(true);
+    clone.style.width = cardWidth+"mm";
+    clone.style.height = cardHeight*2+"mm"; // recto + verso
+    pageDiv.appendChild(clone);
+    if((index+1)%cardsPerPage===0 && (index+1)!==cards.length){
       pageDiv = document.createElement("div");
+      pageDiv.style.width = (pageWidth - 2*margin)+"mm";
+      pageDiv.style.height = (pageHeight - 2*margin)+"mm";
       pageDiv.style.display = "flex";
       pageDiv.style.justifyContent = "flex-start";
-      pageDiv.style.flexWrap = "wrap";
-      pageDiv.style.width = `${pageWidth}mm`;
-      pageDiv.style.height = `${pageHeight}mm`;
-      pageDiv.style.boxSizing = "border-box";
-      count = 0;
+      pageDiv.style.alignItems = "flex-start";
+      pageDiv.style.gap = gap+"mm";
+      pdfContainer.appendChild(pageDiv);
     }
   });
 
-  if(count > 0){
-    pdfContainer.appendChild(pageDiv);
-  }
-
   html2pdf().set({
-    margin: 5,
-    filename: 'cartes_kewere_cedeao_premium.pdf',
-    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-    html2canvas: { scale: 3, useCORS: true, backgroundColor: null },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+    margin:0,
+    filename:'cartes_kewere_PVC.pdf',
+    html2canvas:{ scale:3, useCORS:true },
+    jsPDF:{ unit:'mm', format:'a4', orientation:'landscape' }
   }).from(pdfContainer).save();
 });
 </script>
